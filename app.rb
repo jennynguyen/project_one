@@ -21,6 +21,8 @@ class App < Sinatra::Base
   end
 
   after do
+    #Happy note: I can use logger.info "_: #{}" anywhere
+    #to check my errors.
     logger.info "Response Headers: #{response.headers}"
   end
 
@@ -28,6 +30,7 @@ class App < Sinatra::Base
   # DB Configuration
   ########################
 
+  #ENV["REDISTOGO_URL"]) is saved in my .bash_profile
   $redis = Redis.new(:url => ENV["REDISTOGO_URL"])
 
   ########################
@@ -35,17 +38,18 @@ class App < Sinatra::Base
   ########################
 
   get('/') do
+    #my main page
     # render(:erb, :home_page)
     # redirect to("/posts")
     redirect to("/signup")
   end
 
-  # GET /posts
+
   get("/signup") do
     render(:erb, :signup)
   end
 
-  # GET /posts
+
   get("/signin") do
     render(:erb, :signin)
   end
@@ -57,16 +61,22 @@ class App < Sinatra::Base
     render(:erb, :index)
   end
 
+
   # POST /posts
   post("/posts") do
     # passing parameters from post
     title = params[:title]
     content = params[:content]
-    # Generate unique index
+    # Generate unique index for each post
     index = $redis.incr("post:index")
-    # Generate Json form
+    # Generate json form
+    #keys are: index, title, content
     post = { id: index, title: title, content: content}
-    # Set Json form with Key in redis
+    # Set json form with key in redis
+    #Happy note: need to have a space between "post: #{}"
+    #or else the code won't work.
+    #learned to use logger.info "_: #{}" here to stop and check for error
+    #is it similar to binding.pry??????
     $redis.set("posts: #{index}", post.to_json)
     redirect to("/posts")
   end
@@ -78,6 +88,9 @@ class App < Sinatra::Base
 
   # GET /posts/1
   get("/posts/:id") do
+    #_id, _raw_post are local variables.
+    #They only exist here within this method.
+    #Happy note: spent 18 hours to figure it out. Totally worth it!
     _id = params[:id]
     _raw_post = $redis.get("posts: #{_id}")
     @post = JSON.parse(_raw_post)
@@ -93,6 +106,7 @@ class App < Sinatra::Base
   end
 
   # PUT /posts/1
+  #update post base
   put("/posts/:id") do
     _title = params[:new_post_title]
     _content = params[:new_post_content]
@@ -110,12 +124,15 @@ class App < Sinatra::Base
   end
 
   #for users to sign up
+  #NEED TO FIRGURE OUT HOW TO ALLOW USERS TO REALLY BE ABLE TO SIGN UP!!!
+  #as for now sign up ang sign in don't work => they both lead to the posts I wrote.
   post ('/signup') do
     redirect("/posts")
   end
 
 
   #for users to sign up
+  #same problem as above. Merde!!!!!!!
   post ('/signin') do
     redirect("/posts")
   end

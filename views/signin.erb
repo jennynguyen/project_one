@@ -16,7 +16,6 @@ body{
   margin: 0;
   padding: 0;
   background: #fff;
-
   color: #fff;
   font-family: Arial;
   font-size: 12px;
@@ -148,8 +147,8 @@ body{
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
-    display:none;
-    color:Red;
+  display:none;
+  color:Red;
 }
 
 .footer{
@@ -193,7 +192,7 @@ body{
       var x = document.forms["signIn"]["username"].value;
       var y = document.forms["signIn"]["password"].value;
 
-      if (x=="" || y==""){
+      if (x =="" || y ==""){
         document.getElementById(message).style.display= "inline";
             document.getElementById(message).innerHTML = "All fields are required.";
             return false;
@@ -215,7 +214,7 @@ body{
     <div class="login">
         <form name="signIn" action="/signin" onsubmit="return validateForm('error');" method="POST">
           <input type="text" placeholder="Username" name="username"><br>
-          <input type="password" placeholder="Password" name="password"><br><br>
+          <input type="password" placeholder="Password" name="password"><br></br>
           <label id="error" class="errorMsg"></label><br />
           <input type="submit" value="Log In" >
         </form>

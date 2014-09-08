@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
   <meta charset="UTF-8">
-
   <title>uBlog</title>
   <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 
@@ -65,15 +62,15 @@ body{
 }
 
 #parent_header_div{
-    position: absolute;
+  position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   width: auto;
-    height:100px;
-    float:left;
-    z-index: 2;
-    border-bottom: 1pt solid #53ffff;
+  height:100px;
+  float:left;
+  z-index: 2;
+  border-bottom: 1pt solid #53ffff;
 }
 
 .header{
@@ -81,7 +78,7 @@ body{
   top: calc(0% + 30px);
   left: calc(0% + 100px);
   z-index: 2;
-    margin-right:50px;
+  margin-right:50px;
   float:left;
 }
 
@@ -134,7 +131,7 @@ body{
   position: absolute;
   top: 100px;
   width: calc(100% - 50px);
-    height:calc(100% - 100px);
+  height:calc(100% - 100px);
   background: transparent;
   border: 1px solid rgba(255,255,255,0.6);
   border-radius: 2px;
@@ -204,8 +201,8 @@ body{
   font-size: 16px;
   font-weight: 400;
   padding: 6px;
-    display:none;
-    color:Red;
+  display:none;
+  color:Red;
 }
 
 .footer{
@@ -248,15 +245,13 @@ body{
      function validateForm() {
          var x = document.forms["subForm"]["title"].value;
          var y = document.forms["subForm"]["content"].value;
-         if (x=="" || y == "") {
+         if (x =="" || y == "") {
              alert("Blog can not be empty.");
              return false;
          }
          return true;
      }
    </script>
-
-
 </head>
 
 <body>
@@ -266,7 +261,6 @@ body{
     <div id='parent_header_div'>
       <div class="header">
         <div>u<span>Blog</span></div>
-
       </div>
       <div class="button">
         <input type="button" value="Logout" onClick="document.location.href='/signin';">
