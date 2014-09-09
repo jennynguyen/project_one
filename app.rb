@@ -3,6 +3,7 @@ require 'redis'
 require 'pry'
 require 'json'
 require 'rss'
+require 'redistogo'
 
 class App < Sinatra::Base
 
