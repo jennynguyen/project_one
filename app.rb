@@ -63,6 +63,12 @@ class App < Sinatra::Base
     #sort the array of @posts by id, from lowest
     # binding.pry
     @posts.sort_by! {|hash| hash["id"] }
+    #binding.pry
+    #IT KEEPS BREAKING HERE.
+    #THERE'S SOMETHING WRONG WITH COMPARISION
+    #THE FIRST INDEX ALWAYS RETURNS AS A STRING
+    #INSTEAD AS AN INTERGER
+    #HAVE TO .FLUSHDB AND ADD NEW POSTS AGAIN
     render(:erb, :index)
   end
 
@@ -157,9 +163,12 @@ class App < Sinatra::Base
       end
     end
 
-  puts rss
+  # puts rss
   @rss = rss
-  render(:erb, :rss)
+  # binding.pry
+  #can not render erb file.
+  #it returns a string. For now there's nothing in my content.
+  render(:erb, @rss.to_s)
   end
 
 end
