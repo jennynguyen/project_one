@@ -59,11 +59,12 @@ class App < Sinatra::Base
      posts = $redis.keys("*posts*").map { |post| JSON.parse($redis.get(post)) }
      # @posts = $redis.keys("*posts*").map { |post| JSON.parse($redis.get(post)) }
     @posts = posts[id, 10]
+    #sort the array of @posts by id, from lowest
+    @posts.sort_by! {|hash| hash["id"] }
     render(:erb, :index)
   end
 
   # create a new post, increase counter by 1
-  #
   post("/posts") do
     # passing parameters from post
     title = params[:title]
