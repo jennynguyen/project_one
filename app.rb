@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'redis'
 require 'pry'
 require 'json'
+require 'rss'
 
 class App < Sinatra::Base
 
@@ -60,6 +61,7 @@ class App < Sinatra::Base
      # @posts = $redis.keys("*posts*").map { |post| JSON.parse($redis.get(post)) }
     @posts = posts[id, 10]
     #sort the array of @posts by id, from lowest
+    # binding.pry
     @posts.sort_by! {|hash| hash["id"] }
     render(:erb, :index)
   end
@@ -136,6 +138,28 @@ class App < Sinatra::Base
     #  authenticate!
     # end
     redirect("/posts")
+  end
+
+  get ('/rss/:id') do
+    id = params[:id]
+    title = params[:title]
+
+    rss = RSS::Maker.make("atom") do |maker|
+      maker.channel.author = "Jennifer Nguyen"
+      maker.channel.updated = Time.now.to_s
+      maker.channel.about = "localhost:9393/rss"
+      maker.channel.title = "Blogs Feeds"
+
+      maker.items.new_item do |item|
+        item.link = "/posts/#{:id}"
+        item.title = "/posts/#{:title}"
+        item.updated = Time.now.to_s
+      end
+    end
+
+  puts rss
+  @rss = rss
+  render(:erb, :rss)
   end
 
 end
