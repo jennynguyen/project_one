@@ -168,6 +168,7 @@ class App < Sinatra::Base
   # binding.pry
   #can not render erb file.
   #it returns a string. For now there's nothing in my content.
+  # render(:erb, @rss)
   render(:erb, @rss.to_s)
   end
 
