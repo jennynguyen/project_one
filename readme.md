@@ -11,8 +11,11 @@
 . Ruby 2.1.2
 . Sinatra 1.4.5
 . Redis 3.1.0
-. HTTParty
-. JSON
+. HTTParty 0.13.1
+. JSON 1.8.1
+. Tilt 1.4.1
+. Bundler 1.6.3
+. Rack-protection 1.5.3
 . JavaScript
 . HTML & CSS
 .(Soon to be used) Snippet
@@ -26,4 +29,3 @@ As a user I should be able to sort my results by quality, price, and vintage, to
 As a user I should be able to view a wines details: reviews(if any), awards(if any), winery notes(if any), scientific specs(if any), and pictures of the wine (if any).
 As a user I should be able to find pairings for a wine if I find one I like so I may be able to enjoy the wine in a meal setting.
 As a user I should be able to log in and if I find a wine I truly enjoyed, I should be able to store it's information for later reference so I may remember what it was and why I liked it.
-
