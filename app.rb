@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'redis'
-require 'pry'
+require 'pry' if ENV["RACK_ENV"] == "development"
 require 'json'
 require 'rss'
 # require 'redistogo'
