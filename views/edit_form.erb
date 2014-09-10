@@ -280,7 +280,7 @@ body{
         <div class="subForm">
             <form action="/posts/<%= @post["id"] %>" method="POST">
               <input type="text" name="new_post_title" value="<%= @post["title"] %>"><br><br>
-             <!--  <textarea name="new_post_content"><%= @post["content"] %></textarea> -->
+              <!-- <textarea name="new_post_content"><%= @post["content"] %></textarea> -->
               <div class="editable" name="content" contentEditable=true><%= @post["content"] %></div>
               <input type="hidden" name="_method" value="PUT">
             </form>

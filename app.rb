@@ -82,6 +82,7 @@ class App < Sinatra::Base
     index = $redis.incr("post:index")
     # Generate json form
     #keys are: index, title, content
+    # binding.pry
     post = { id: index, title: title, content: content}
     # Set json form with key in redis
     $redis.set("posts: #{index}", post.to_json)

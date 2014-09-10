@@ -269,7 +269,7 @@ body{
         <div class="subForm">
             <form action="/posts/<%= @post["id"] %>" method="POST">
               <input type="text" name="title" disabled value="<%= @post["title"] %>"><br><br>
-              <!-- <textarea name="content" disabled><%= @post["content"] %></textarea> -->
+             <!--  <textarea name="content" disabled><%= @post["content"] %></textarea> -->
               <div class="editable" name="content" ><%= @post["content"] %></div>
               <input type="hidden" name="_method" value="DELETE">
             </form>
