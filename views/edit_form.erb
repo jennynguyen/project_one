@@ -242,8 +242,8 @@ body{
 </style>
 
     <script src="js/prefixfree.min.js"></script>
-    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-    <script type="text/javascript">
+    // <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    // <script type="text/javascript">
     tinymce.init({
         menubar : false,
         resize: false,
@@ -280,7 +280,7 @@ body{
         <div class="subForm">
             <form action="/posts/<%= @post["id"] %>" method="POST">
               <input type="text" name="new_post_title" value="<%= @post["title"] %>"><br><br>
-              <!-- <textarea name="new_post_content"><%= @post["content"] %></textarea> -->
+             <!--  <textarea name="new_post_content"><%= @post["content"] %></textarea> -->
               <div class="editable" name="content" contentEditable=true><%= @post["content"] %></div>
               <input type="hidden" name="_method" value="PUT">
             </form>
