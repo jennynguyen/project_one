@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'redis'
-# require 'pry'
+require 'pry'
 require 'json'
 require 'rss'
 # require 'redistogo'
@@ -115,7 +115,7 @@ class App < Sinatra::Base
   put("/posts/:id") do
     _title = params[:new_post_title]
     _content = params[:new_post_content]
-    _id = params[:id]
+    _id = params[:id].to_i
     updated_post = {id: _id, title: _title, content: _content}
     #$redis key is "post: #{_id}"
     $redis.set("posts: #{_id}", updated_post.to_json)
