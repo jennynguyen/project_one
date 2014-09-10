@@ -128,7 +128,7 @@ body{
   z-index: 2;
 }
 
-.editable{
+.subForm textarea{
   position: absolute;
   top: 100px;
   width: calc(100% - 50px);
@@ -242,21 +242,7 @@ body{
 </style>
 
     <script src="js/prefixfree.min.js"></script>
-    // <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-    // <script type="text/javascript">
-    tinymce.init({
-        menubar : false,
-        resize: false,
-        statusbar : false,
-        browser_spellcheck : true,
-        selector: "div.editable",
-        inline: true,
-        plugins: ["link image code","textcolor", "emoticons"],
-        relative_urls: false,
-        remove_script_host: false,
-        toolbar: "forecolor backcolor emoticons | fontselect,fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    });
-  </script>
+
 
 </head>
 
@@ -280,8 +266,7 @@ body{
         <div class="subForm">
             <form action="/posts/<%= @post["id"] %>" method="POST">
               <input type="text" name="new_post_title" value="<%= @post["title"] %>"><br><br>
-              <!-- <textarea name="new_post_content"><%= @post["content"] %></textarea> -->
-              <div class="editable" name="content" contentEditable=true><%= @post["content"] %></div>
+              <textarea name="new_post_content"><%= @post["content"] %></textarea>
               <input type="hidden" name="_method" value="PUT">
             </form>
         </div>
@@ -294,4 +279,3 @@ body{
 </body>
 
 </html>
-

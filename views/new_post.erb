@@ -127,7 +127,7 @@ body{
   z-index: 2;
 }
 
-.editable{
+.subForm textarea{
   position: absolute;
   top: 100px;
   width: calc(100% - 50px);
@@ -238,14 +238,6 @@ body{
 ::-moz-input-placeholder{
    color: rgba(255,255,255,0.6);
 }
-
-
-div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
-    content: attr(data-placeholder);
-    float: left;
-    margin-left: 2px;
-    color: #b3b3b3;
-}
 </style>
 
     <script src="js/prefixfree.min.js"></script>
@@ -260,26 +252,6 @@ div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
          return true;
      }
    </script>
-/* -------------------------------------
-EDITOR CONTROLLER
-------------------------------------- */
-  <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-  <script type="text/javascript">
-    tinymce.init({
-        menubar : false,
-        resize: false,
-        statusbar : false,
-        browser_spellcheck : true,
-        selector: "div.editable",
-        inline: true,
-        plugins: ["link image code","textcolor", "emoticons"],
-        relative_urls: false,
-        remove_script_host: false,
-        toolbar: "forecolor backcolor emoticons | fontselect,fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    });
-  </script>
-</script>
-
 </head>
 
 <body>
@@ -302,10 +274,8 @@ EDITOR CONTROLLER
         <div class="subForm">
           <!-- <form id="addPost" action="/posts" onsubmit="return validateForm();" method="POST"> -->
             <form id="addPost" action="/posts" onsubmit="return validateForm();" method="POST">
-              <input type="text" placeholder="Type Blog Title Here" name="title" ><br><br><br><br>
-<!--               <textarea name="content" placeholder="Type Blog Content Here"></textarea> -->
-              <div class="editable" name="content" contentEditable=true data-placeholder="Type Blog Content Here"></div>
-
+              <input type="text" placeholder="Type Blog Title Here" name="title" ><br><br>
+              <textarea name="content" placeholder="Type Blog Content Here"></textarea>
             </form>
         </div>
       </div>
