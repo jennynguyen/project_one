@@ -148,7 +148,7 @@ class App < Sinatra::Base
     redirect("/posts")
   end
 
-  get ('/rss/:id') do
+  get('/rss/:id') do
     id = params[:id]
     title = params[:title]
 
@@ -166,12 +166,12 @@ class App < Sinatra::Base
     end
 
   # puts rss
-  @rss = rss
+  # @rss = rss
   # binding.pry
   #can not render erb file.
   #it returns a string. For now there's nothing in my content.
   # render(:erb, @rss)
-  render(:erb, @rss.to_s)
+    rss.to_s
   end
 
 end
