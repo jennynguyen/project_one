@@ -14,7 +14,6 @@ class App < ApplicationController
     render(:erb, :signin)
   end
 
-  # GET /posts
   get("/posts") do
     id = params["first"].to_i || 0
     posts = $redis.keys("*posts*").map { |post| JSON.parse($redis.get(post)) }
@@ -26,7 +25,7 @@ class App < ApplicationController
 
   post("/posts") do
     title = params[:title]
-    content = params[:content]
+    content = params[:mce_0]
     index = $redis.incr("post:index")
     post = { id: index, title: title, content: content}
     $redis.set("posts: #{index}", post.to_json)
@@ -53,7 +52,7 @@ class App < ApplicationController
 
   put("/posts/:id") do
     _title = params[:new_post_title]
-    _content = params[:new_post_content]
+    _content = params[:mce_0]
     _id = params[:id].to_i
     updated_post = {id: _id, title: _title, content: _content}
     $redis.set("posts: #{_id}", updated_post.to_json)
